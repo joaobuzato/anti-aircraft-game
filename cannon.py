@@ -1,6 +1,6 @@
 from turtle import Turtle
 STARTING_POS = (2, -70)
-TURN_DEGREES = 15
+TURN_DEGREES = 45
 
 
 class Cannon(Turtle):
@@ -12,12 +12,14 @@ class Cannon(Turtle):
         self.goto(STARTING_POS)
 
     def turn_right(self):
-        self.right(TURN_DEGREES)
+        if self.heading() < 135:
+            self.setheading(self.heading()+TURN_DEGREES)
 
     def turn_left(self):
-        self.left(TURN_DEGREES)
+        if self.heading() > 45:
+            self.setheading(self.heading()-TURN_DEGREES)
 
     def shoot(self):
         # TODO
-        # shoot
+        print("shoot")
         pass
