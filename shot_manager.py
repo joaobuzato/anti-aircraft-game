@@ -7,6 +7,7 @@ class ShotManager:
     def __init__(self):
         self.shot_speed = 10
 
+
     def shoot(self, screen, heading):
             shot = Shot(screen, heading())
             shots.append(shot)
@@ -18,11 +19,3 @@ class ShotManager:
                 del shot
             else:
                 shot.forward(self.shot_speed)
-
-
-    def check_crash(self, player):
-        for shot in shots:
-            if player.distance(shot) < 20 and player.ycor() > shot.ycor()-15:
-                return True
-
-        return False
