@@ -30,8 +30,9 @@ class MissileManager:
             else:
                 missile.forward(self.missile_speed)
 
-
     def detect_colision(self, shot):
         for missile in missiles:
             if missile.distance(shot) < 10:
-                print("COLISION!")
+                missile.goto(500, 500)
+                missiles.remove(missile)
+                del missile

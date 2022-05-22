@@ -10,8 +10,6 @@ screen.title("Anti-Aircraft")
 bg_img = "img/bg.gif"
 screen.bgpic(bg_img)
 
-
-
 cannon = Cannon(screen)
 missile_manager = MissileManager(screen)
 
@@ -31,7 +29,7 @@ while game_is_on:
     missile_manager.missile_bombing()
     missile_manager.move_missiles()
     for shot in cannon.shots:
-        missile_manager.detect_colision(shot)
-
+        if missile_manager.detect_colision(shot):
+            cannon.shot_manager.explode(shot)
 
 screen.exitonclick()

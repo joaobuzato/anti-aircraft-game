@@ -20,3 +20,8 @@ class ShotManager:
                 del shot
             else:
                 shot.forward(self.shot_speed)
+
+    def explode(self, shot):
+        shot.goto(500, 500)
+        shots.remove(shot)
+        del shot
