@@ -1,10 +1,10 @@
 from turtle import Turtle
-from shot import Shot
+from shot_manager import ShotManager
 STARTING_POS = (2, -70)
 TURN_DEGREES = 45
 cannon_img = "img/cannon.gif"
-cannon_img_left_45 = "img/cannon-45.gif"
-cannon_img_right_45 = "img/cannon45.gif"
+cannon_img_left = "img/cannon-left.gif"
+cannon_img_right = "img/cannon-right.gif"
 
 
 class Cannon(Turtle):
@@ -15,30 +15,33 @@ class Cannon(Turtle):
         self.setheading(90)
         self.screen = screen
         self.goto(STARTING_POS)
+        self.shot_manager = ShotManager()
 
         self.screen.register_shape(cannon_img)
-        self.screen.register_shape(cannon_img_left_45)
-        self.screen.register_shape(cannon_img_right_45)
+        self.screen.register_shape(cannon_img_left)
+        self.screen.register_shape(cannon_img_right)
 
         self.shape(cannon_img)
 
     def turn_right(self):
-        if self.heading() < 135:
-            self.setheading(self.heading()+TURN_DEGREES)
-            if self.heading() == 90:
-                self.shape(cannon_img)
-            else:
-                self.shape(cannon_img_right_45)
-
-    def turn_left(self):
         if self.heading() > 45:
             self.setheading(self.heading()-TURN_DEGREES)
             if self.heading() == 90:
                 self.shape(cannon_img)
             else:
-                self.shape(cannon_img_left_45)
+                self.shape(cannon_img_right)
+
+    def turn_left(self):
+        if self.heading() < 135:
+            self.setheading(self.heading() + TURN_DEGREES)
+            if self.heading() == 90:
+                self.shape(cannon_img)
+            else:
+                self.shape(cannon_img_left)
 
     def shoot(self):
-        # TODO
-        shot = Shot(self.screen, self.heading())
-        return shot
+        self.shot_manager.shoot(self.screen, self.heading)
+        pass
+
+    def move_shots(self):
+        self.shot_manager.move_shots()

@@ -15,8 +15,4 @@ class Shot(Turtle):
         self.screen.register_shape(SHOT_IMG)
         self.shape(SHOT_IMG)
 
-    def move(self):
-        self.forward(10)
-
-
 

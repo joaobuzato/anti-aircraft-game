@@ -26,6 +26,7 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.05)
     screen.update()
+    cannon.move_shots()
 
 
 screen.exitonclick()
