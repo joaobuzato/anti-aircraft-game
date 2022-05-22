@@ -1,6 +1,6 @@
 from turtle import Turtle
 from shot_manager import ShotManager
-STARTING_POS = (2, -70)
+STARTING_POS = (0, -135)
 TURN_DEGREES = 45
 cannon_img = "img/cannon.gif"
 cannon_img_left = "img/cannon-left.gif"
@@ -16,6 +16,7 @@ class Cannon(Turtle):
         self.screen = screen
         self.goto(STARTING_POS)
         self.shot_manager = ShotManager()
+        self.shots = []
 
         self.screen.register_shape(cannon_img)
         self.screen.register_shape(cannon_img_left)
@@ -40,8 +41,8 @@ class Cannon(Turtle):
                 self.shape(cannon_img_left)
 
     def shoot(self):
-        self.shot_manager.shoot(self.screen, self.heading())
-        pass
+        self.shots = self.shot_manager.shoot(self.screen, self.heading())
+
 
     def move_shots(self):
         self.shot_manager.move_shots()

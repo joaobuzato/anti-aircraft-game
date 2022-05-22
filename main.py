@@ -30,6 +30,8 @@ while game_is_on:
     cannon.move_shots()
     missile_manager.missile_bombing()
     missile_manager.move_missiles()
+    for shot in cannon.shots:
+        missile_manager.detect_colision(shot)
 
 
 screen.exitonclick()

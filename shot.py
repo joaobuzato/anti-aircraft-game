@@ -1,5 +1,5 @@
 from turtle import Turtle
-STARTING_POS = (2, -70)
+STARTING_POS = (0, -135)
 
 SHOT_IMG = 'img/shot.gif'
 SHOT_IMG_RIGHT = 'img/shot-right.gif'
@@ -23,5 +23,6 @@ class Shot(Turtle):
             self.shape(SHOT_IMG_RIGHT)
         elif self.heading() == 135:
             self.shape(SHOT_IMG_LEFT)
+
 
 

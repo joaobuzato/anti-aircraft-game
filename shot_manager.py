@@ -11,6 +11,7 @@ class ShotManager:
     def shoot(self, screen, heading):
             shot = Shot(screen, heading)
             shots.append(shot)
+            return shots
 
     def move_shots(self):
         for shot in shots:
