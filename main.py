@@ -2,6 +2,7 @@ import time
 from turtle import Screen
 from cannon import Cannon
 from missile_manager import MissileManager
+from scoreboard import Scoreboard
 
 screen = Screen()
 
@@ -12,6 +13,7 @@ screen.bgpic(bg_img)
 
 cannon = Cannon(screen)
 missile_manager = MissileManager(screen)
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(key="a", fun=cannon.turn_left)
@@ -23,13 +25,16 @@ screen.tracer(0)
 game_is_on = True
 
 while game_is_on:
-    time.sleep(0.05)
+    time.sleep(0.03)
     screen.update()
     cannon.move_shots()
     missile_manager.missile_bombing()
     missile_manager.move_missiles()
+
     for shot in cannon.shots:
         if missile_manager.detect_colision(shot):
+            scoreboard.point()
             cannon.shot_manager.explode(shot)
+
 
 screen.exitonclick()

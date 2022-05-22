@@ -34,5 +34,9 @@ class MissileManager:
         for missile in missiles:
             if missile.distance(shot) < 10:
                 missile.goto(500, 500)
+                missile.clear()
                 missiles.remove(missile)
                 del missile
+                return True
+
+        return False
