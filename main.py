@@ -1,6 +1,7 @@
 import time
 from turtle import Screen
 from cannon import Cannon
+from missile_manager import MissileManager
 
 screen = Screen()
 
@@ -12,7 +13,7 @@ screen.bgpic(bg_img)
 
 
 cannon = Cannon(screen)
-
+missile_manager = MissileManager(screen)
 
 screen.listen()
 screen.onkey(key="a", fun=cannon.turn_left)
@@ -27,6 +28,8 @@ while game_is_on:
     time.sleep(0.05)
     screen.update()
     cannon.move_shots()
+    missile_manager.missile_bombing()
+    missile_manager.move_missiles()
 
 
 screen.exitonclick()

@@ -40,7 +40,7 @@ class Cannon(Turtle):
                 self.shape(cannon_img_left)
 
     def shoot(self):
-        self.shot_manager.shoot(self.screen, self.heading)
+        self.shot_manager.shoot(self.screen, self.heading())
         pass
 
     def move_shots(self):

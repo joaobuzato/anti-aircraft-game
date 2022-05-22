@@ -9,7 +9,7 @@ class ShotManager:
 
 
     def shoot(self, screen, heading):
-            shot = Shot(screen, heading())
+            shot = Shot(screen, heading)
             shots.append(shot)
 
     def move_shots(self):
