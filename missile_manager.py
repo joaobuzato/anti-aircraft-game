@@ -2,23 +2,23 @@ import random
 from turtle import Turtle
 from missile import Missile
 
-headings =[270]
-start_pos = [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 215, 230, 245, 0, -15, -30, -45, -60, -75, -90, -105, -120, -135, -150, -165, -180, -195, -210, -215, -230, -245]
+headings =[330, 315, 300, 285, 270, 255, 240, 225, 210]
+start_pos = [45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 215, 230, 245, -45, -60, -75, -90, -105, -120, -135, -150, -165, -180, -195, -210, -215, -230, -245]
 
 missiles = []
 
 class MissileManager:
     def __init__(self, screen):
-        self.missile_speed = 4
+        self.missile_speed = 1
         self.screen = screen
 
     def missile_bombing(self):
-        bombing = random.randint(0, 5) == 3
+        bombing = random.randint(0, 8) == 3
         if bombing:
             self.bomb(random.choice(headings), random.choice(start_pos))
 
     def bomb(self, heading, start_pos):
-        missile = Missile(self.screen, heading, starting_pos=(start_pos, 400))
+        missile = Missile(self.screen, heading, starting_pos=(start_pos, 320))
         missiles.append(missile)
 
     def move_missiles(self):
