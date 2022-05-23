@@ -30,6 +30,9 @@ while game_is_on:
     cannon.move_shots()
     missile_manager.missile_bombing()
     missile_manager.move_missiles()
+    if missile_manager.hit_the_ground():
+        scoreboard.game_over()
+        game_is_on = False
 
     for shot in cannon.shots:
         if missile_manager.detect_colision(shot):

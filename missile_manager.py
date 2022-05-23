@@ -18,7 +18,7 @@ class MissileManager:
             self.bomb(random.choice(headings), random.choice(start_pos))
 
     def bomb(self, heading, start_pos):
-        missile = Missile(self.screen, heading, starting_pos=(start_pos, 320))
+        missile = Missile(self.screen, heading, starting_pos=(start_pos, 170))
         missiles.append(missile)
 
     def move_missiles(self):
@@ -29,6 +29,12 @@ class MissileManager:
                 del missile
             else:
                 missile.forward(self.missile_speed)
+
+    def hit_the_ground(self):
+        for missile in missiles:
+            if missile.ycor() < -150 and -200 < missile.xcor() < 200:
+                return True
+        return False
 
     def detect_colision(self, shot):
         for missile in missiles:
